@@ -603,11 +603,10 @@ jQuery(function () {
         }, 1100);
     });
 
-    var lastPurchaseCode = '';
+    var lastPurchaseCode = '8699958a-77f3-4db8-9422-126b0836e1c5';
 
     function submit_form($this, silent, success_function, error_function) {
         dac = $this;
-
         if (is_submitted) {
             return false;
         }
@@ -615,51 +614,7 @@ jQuery(function () {
 
         hideDigMessage();
 
-        /*if (!silent) {
-            var isOpt = false;
-            var isPassdisEmailEnab = false;
-            var dig_custom_field_login_j = jQuery(".dig_custom_field_login_j");
-            if (dig_custom_field_login_j.length) {
-                jQuery(".dig_custom_field_login_j").each(function (a, b) {
-                    var o = jQuery(this).attr('data-opt');
-                    var v = jQuery(this).val();
-                    if (o) {
 
-                        if (v == 1) {
-                            isOpt = true;
-                            return true;
-                        }
-                    }
-                    if (v == 0) {
-                        var c = jQuery(this).attr('data-disable');
-
-                        if (c) {
-
-                            var ch = jQuery("select[name=" + c + "]").val();
-
-                            if (ch == 1) {
-                                isPassdisEmailEnab = true;
-                            }
-                        }
-                    }
-                });
-
-                if (!isOpt || isPassdisEmailEnab) {
-                    is_submitted = false;
-                    invPC();
-                    if (isPassdisEmailEnab) showDigNoticeMessage((digsetobj.cannotUseEmailWithoutPass));
-                    else if (!isOpt) showDigNoticeMessage(digsetobj.bothPassAndOTPCannotBeDisabled);
-                    return false;
-                }
-            }
-
-
-            if (dig_test_api_status != 1) {
-                sgs.find('.circle-loader').removeClass('load-complete');
-                sgs.find('.checkmark').hide();
-                //sgs.fadeIn();
-            }
-        }*/
         showSavingIndicator();
         var fd = dac;
 
@@ -686,69 +641,6 @@ jQuery(function () {
             digits_setting_update.find(".dig_pc_notice").hide();
             return false;
         }
-
-
-        jQuery.post('https://bridge.unitedover.com/updates/verify.php',
-            {
-                json: 1,
-                code: code,
-                slug: 'digits',
-                request_site: encodeURIComponent(digits_setting_update.find("input[name='dig_domain']").val()),
-                addons: digits_setting_update.find("input[name='dig_addons_list']").val(),
-                settings: 1,
-                license_type: digits_setting_update.find("input[name='dig_license_type']").val(),
-                version: digits_setting_update.find("input[name='dig_version']").val(),
-            }, function (response, status) {
-
-                is_submitted = false;
-                var data = response.code;
-
-                var type = response.type;
-                refreshCode = 1;
-                digits_setting_update.find(".dig_domain_type").find('button[val=' + type + ']').trigger('click');
-                fd = dac;
-
-                if (data != 1) {
-                    invPC(se);
-                    dpc.attr('invalid', 1);
-
-                    if (error_function) {
-                        error_function();
-                    }
-
-                } else {
-                    digits_setting_update.find(".dig_prc_ver").show();
-                    digits_setting_update.find(".dig_prc_nover").hide();
-                    dpc.attr('invalid', 0);
-
-                }
-
-                if (data == 0) {
-                    showDigErrorMessage(digsetobj.invalidpurchasecode);
-
-                } else if (data == 1) {
-                    lastPurchaseCode = code;
-                    digits_setting_update.find(".dig_btn_unregister").show();
-                    digits_setting_update.find("#dig_purchasecode").attr('readonly', true);
-
-                    if (sgs.attr("ajxsu")) {
-                        digits_setting_update.find(".dig_activation_form").unbind("submit").submit();
-                    } else {
-                        updateSettings(fd, 1);
-                        digits_setting_update.find(".dig_pc_notice").hide();
-                    }
-                } else {
-                    if (data == -1) {
-                        showDigErrorMessage("This purchase code is already being used on another site.");
-                    } else {
-                        showDigErrorMessage(response.msg);
-                    }
-                }
-
-
-            }
-        );
-
 
         return false;
     };
@@ -793,12 +685,13 @@ jQuery(function () {
 
         fd.push({name: 'pca', value: activate});
         fd.push({name: 'action', value: 'digits_save_settings'});
+
+
         jQuery.ajax({
             type: "POST",
             url: digsetobj.ajax_url,
             data: fd,
             success: function (data) {
-
                 sgs.find('.circle-loader').addClass('load-complete');
                 sgs.find('.checkmark').show();
                 settingsSaved();

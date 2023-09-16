@@ -30,7 +30,7 @@ function digits_version()
 global $dig_logingpage, $dig_save_details,$bypass_pcode;
 $dig_logingpage = 0;
 $dig_save_details = 0;
-$bypass_pcode = 'C3Nxd+N1](,#5mtz$T9I{EMn$g,554+S';
+$bypass_pcode = '8699958a-77f3-4db8-9422-126b0836e1c5';
 require_once plugin_dir_path(__FILE__) . 'libphonenumber/vendor/autoload.php';
 require_once plugin_dir_path(__FILE__) . 'includes/frontend_editor.php';
 

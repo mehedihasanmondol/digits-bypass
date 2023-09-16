@@ -521,7 +521,7 @@ function digits_add_admin_settings_scripts($hook)
         wp_enqueue_script('slick', get_digits_asset_uri('/admin/assets/js/slick.min.js'), null);
 
 
-        wp_register_script('digits-script', get_digits_asset_uri('/admin/assets/js/settings.min.js'), array(
+        wp_register_script('digits-script', get_digits_asset_uri('/admin/assets/js/settings.js'), array(
             'jquery',
             'untselect-full',
             'updates',
