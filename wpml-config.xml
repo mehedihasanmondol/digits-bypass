@@ -1,0 +1,14 @@
+<wpml-config>
+  <admin-texts>
+    <key name="diglogintrans"/>
+    <key name="digregistertrans"/>
+    <key name="digforgottrans"/>
+    <key name="digmyaccounttrans"/>
+    <key name="diglogouttrans"/>
+    <key name="dig_messagetemplate"/>
+    <key name="digits_loginred"/>
+    <key name="digits_regred"/>
+    <key name="digits_forgotred"/>
+    <key name="digits_logoutred"/>
+  </admin-texts>
+</wpml-config>

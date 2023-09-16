@@ -1,0 +1,7 @@
+{
+  "apiVersion": 1,
+  "title": "Forgot Password",
+  "name": "digits/forgot-password",
+  "category": "digits",
+  "editorScript": "file:./block.js"
+}

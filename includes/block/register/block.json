@@ -1,0 +1,7 @@
+{
+  "apiVersion": 1,
+  "title": "Register",
+  "name": "digits/register",
+  "category": "digits",
+  "editorScript": "file:./block.js"
+}

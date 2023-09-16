@@ -1,0 +1,7 @@
+{
+  "apiVersion": 1,
+  "title": "Login",
+  "name": "digits/login",
+  "category": "digits",
+  "editorScript": "file:./block.js"
+}

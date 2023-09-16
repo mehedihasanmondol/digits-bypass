@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head >
+	<meta charset="UTF-8" >
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<title >QR Code Generator</title >
+	<style >
+		body{ font-size: 20px; line-height: 1.4em; font-family: "Trebuchet MS", sans-serif; color: #000;}
+		input, textarea, select{font-family: Consolas, "Liberation Mono", Courier, monospace; font-size: 75%; line-height: 1.25em; border: 1px solid #aaa; }
+		input:focus, textarea:focus, select:focus{ border: 1px solid #ccc; }
+		label{ cursor: pointer; }
+		#qrcode-settings, div#qrcode-output{ text-align: center; }
+		div#qrcode-output > div {margin: 0;padding: 0;height: 3px;}
+		div#qrcode-output > div > span {display: inline-block;width: 3px;height: 3px;}
+		div#qrcode-output > div > span {background-color: lightgrey;}
+	</style >
+</head >
+<body >
+
+<form id="qrcode-settings" >
+
+	<label for="inputstring" >Input String</label ><br /><textarea autocomplete="off" cols="80" id="inputstring" name="inputstring" rows="3" spellcheck="false"></textarea ><br />
+
+	<label for="version" >Version</label >
+	<input class="options" id="version" max="40" min="1" name="version" placeholder="version" type="number" value="5" />
+
+	<label for="maskpattern" >Mask Pattern</label >
+	<input class="options" id="maskpattern" max="7" min="-1" name="maskpattern" placeholder="mask pattern" type="number" value="-1" />
+
+	<label for="ecc" >ECC</label >
+	<select class="options" id="ecc" name="ecc" >
+		<option selected="selected" value="L" >L - 7%</option >
+		<option value="M" >M - 15%</option >
+		<option value="Q" >Q - 25%</option >
+		<option value="H" >H - 30%</option >
+	</select >
+
+	<br />
+
+	<label for="quietzone" >Quiet Zone
+		<input class="options" id="quietzone" name="quietzone" type="checkbox" value="true" />
+	</label >
+
+	<label for="quietzonesize" >size</label >
+	<input class="options" id="quietzonesize" max="100" min="0" name="quietzonesize" placeholder="quiet zone" type="number" value="4" />
+
+	<br />
+
+	<label for="output_type" >Output</label >
+	<select class="options" id="output_type" name="output_type" >
+		<option value="html" >Markup - HTML</option >
+		<option selected="selected"  value="svg" >Markup - SVG</option >
+		<option value="png">Image - png</option >
+		<option value="jpg" >Image - jpg</option >
+		<option value="gif" >Image - gif</option >
+		<option value="text" >String - text</option >
+		<option value="json" >String - json</option >
+	</select >
+
+	<label for="scale" >scale</label >
+	<input class="options" id="scale" max="10" min="1" name="scale" placeholder="scale" type="number" value="5" />
+
+	<div>Finder</div>
+	<label for="m_finder_light" >
+		<input autocomplete="off" class="jscolor options" id="m_finder_light" maxlength="6" minlength="6" name="m_finder_light" spellcheck="false" type="text" value="ffffff" />
+	</label >
+	<label for="m_finder_dark" >
+		<input autocomplete="off" class="jscolor options" id="m_finder_dark" maxlength="6" minlength="6" name="m_finder_dark" spellcheck="false" type="text" value="000000" />
+	</label >
+
+	<div>Alignment</div>
+	<label for="m_alignment_light" >
+		<input autocomplete="off" class="jscolor options" id="m_alignment_light" maxlength="6" minlength="6" name="m_alignment_light" spellcheck="false" type="text" value="ffffff" />
+	</label >
+	<label for="m_alignment_dark" >
+		<input autocomplete="off" class="jscolor options" id="m_alignment_dark" maxlength="6" minlength="6" name="m_alignment_dark" spellcheck="false" type="text" value="000000" />
+	</label >
+
+	<div>Timing</div>
+	<label for="m_timing_light" >
+		<input autocomplete="off" class="jscolor options" id="m_timing_light" maxlength="6" minlength="6" name="m_timing_light" spellcheck="false" type="text" value="ffffff" />
+	</label >
+	<label for="m_timing_dark" >
+		<input autocomplete="off" class="jscolor options" id="m_timing_dark" maxlength="6" minlength="6" name="m_timing_dark" spellcheck="false" type="text" value="000000" />
+	</label >
+
+	<div>Format</div>
+	<label for="m_format_light" >
+		<input autocomplete="off" class="jscolor options" id="m_format_light" maxlength="6" minlength="6" name="m_format_light" spellcheck="false" type="text" value="ffffff" />
+	</label >
+	<label for="m_format_dark" >
+		<input autocomplete="off" class="jscolor options" id="m_format_dark" maxlength="6" minlength="6" name="m_format_dark" spellcheck="false" type="text" value="000000" />
+	</label >
+
+	<div>Version</div>
+	<label for="m_version_light" >
+		<input autocomplete="off" class="jscolor options" id="m_version_light" maxlength="6" minlength="6" name="m_version_light" spellcheck="false" type="text" value="ffffff" />
+	</label >
+	<label for="m_version_dark" >
+		<input autocomplete="off" class="jscolor options" id="m_version_dark" maxlength="6" minlength="6" name="m_version_dark" spellcheck="false" type="text" value="000000" />
+	</label >
+
+	<div>Data</div>
+	<label for="m_data_light" >
+		<input autocomplete="off" class="jscolor options" id="m_data_light" maxlength="6" minlength="6" name="m_data_light" spellcheck="false" type="text" value="ffffff" />
+	</label >
+	<label for="m_data_dark" >
+		<input autocomplete="off" class="jscolor options" id="m_data_dark" maxlength="6" minlength="6" name="m_data_dark" spellcheck="false" type="text" value="000000" />
+	</label >
+
+	<div>Dark Module</div>
+	<label for="m_darkmodule_light" >
+		<input autocomplete="off" class="options" disabled="disabled" id="m_darkmodule_light" spellcheck="false" type="text" value="" />
+	</label >
+	<label for="m_darkmodule_dark" >
+		<input autocomplete="off" class="jscolor options" id="m_darkmodule_dark" maxlength="6" minlength="6" name="m_darkmodule_dark" spellcheck="false" type="text" value="000000" />
+	</label >
+
+	<div>Separator</div>
+	<label for="m_separator_light" >
+		<input autocomplete="off" class="jscolor options" id="m_separator_light" maxlength="6" minlength="6" name="m_separator_light" spellcheck="false" type="text" value="ffffff" />
+	</label >
+	<label for="m_separator_dark" >
+		<input autocomplete="off" class="options" disabled="disabled" id="m_separator_dark" spellcheck="false" type="text" value="" />
+	</label >
+
+	<div>Quiet Zone</div>
+	<label for="m_quietzone_light" >
+		<input autocomplete="off" class="jscolor options" id="m_quietzone_light" maxlength="6" minlength="6" name="m_quietzone_light" spellcheck="false" type="text" value="ffffff" />
+	</label >
+	<label for="m_quietzone_dark" >
+		<input autocomplete="off" class="options" disabled="disabled" id="m_quietzone_dark" spellcheck="false" type="text" value="" />
+	</label >
+
+	<br />
+	<button type="submit" >generate</button >
+</form >
+<div id="qrcode-output" ></div >
+
+<div><a href="https://play.google.com/store/apps/details?id=com.google.zxing.client.android" >ZXing Barcode Scanner</a ></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prototype/1.7.3/prototype.js" ></script >
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.js" ></script >
+<script >
+	((form, output, url) => {
+
+		$(form).observe('submit', ev => {
+			Event.stop(ev);
+
+			new Ajax.Request(url, {
+				method: 'post',
+				parameters: ev.target.serialize(true),
+				onUninitialized: $(output).update(),
+				onLoading: $(output).update('[portlandia_screaming.gif]'),
+				onFailure: response => $(output).update(response.responseJSON.error),
+				onSuccess: response => $(output).update(response.responseJSON.qrcode),
+			});
+
+		});
+	})('qrcode-settings', 'qrcode-output', './qrcode.php');
+</script >
+
+</body >
+</html >
