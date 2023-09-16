@@ -756,6 +756,7 @@ function digits_settings_tab_ui()
                 'redirection' => array('label' => esc_attr__('Redirection', 'digits'), 'function' => 'redirection'),
                 'woocommerce' => array('label' => esc_attr__('WooCommerce', 'digits'), 'function' => 'woocommerce'),
                 'translations' => array('label' => esc_attr__('Translations', 'digits')),
+                'shortcodes' => array('label' => esc_attr__('Shortcodes', 'digits')),
                 'miscellaneous' => array('label' => esc_attr__('Miscellaneous', 'digits'), 'function' => 'miscellaneous'),
                 'recaptcha' => array('label' => esc_attr__('reCAPTCHA', 'digits'), 'function' => 'recaptcha', 'sensitive' => true),
             )

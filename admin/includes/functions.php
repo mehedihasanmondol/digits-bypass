@@ -828,10 +828,10 @@ function digit_addons($active_tab)
                 echo '<div class="dig_admin_tab_grid_elem">';
                 foreach ($new_addons as $plugin) {
 
-                    if (is_plugin_active($plugin['plugin'])) {
-                        if (!$plugin['multi_site'] || empty($plugin['multi_site']) || $plugin['multi_site'] == 0)
-                            deactivate_plugins($plugin['plugin']);
-                    }
+//                    if (is_plugin_active($plugin['plugin'])) {
+//                        if (!$plugin['multi_site'] || empty($plugin['multi_site']) || $plugin['multi_site'] == 0)
+//                            deactivate_plugins($plugin['plugin']);
+//                    }
                     ?>
 
 
