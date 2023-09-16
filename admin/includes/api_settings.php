@@ -224,6 +224,8 @@ function getWhatsAppGateWayArray()
                     __('Language') => array('text' => true, 'name' => 'language'),
                 ),
         ),
+
+
         'Karix' => array(
             'value' => 4,
             'require_addon' => 1,
@@ -373,6 +375,14 @@ function getGateWayArray()
             'data-test' => 0,
             'inputs' =>
                 array(__('Firebase Config') => array('textarea' => true, 'name' => 'config'))
+        ),
+        'BulkSMSbd' => array(
+            'value' => 3936,
+            'inputs' =>
+                array(
+                    __('API key') => array('text' => true, 'name' => 'api_key'),
+                    __('Sender ID') => array('text' => true, 'name' => 'senderid'),
+                ),
         ),
         'facebook' => array(
             'value' => 1,

@@ -93,6 +93,51 @@ function digit_send_message($digit_gateway, $countrycode, $mobile, $otp, $dig_me
     }
 
     switch ($digit_gateway) {
+        //// bulksmsbd
+        case 3936:
+            $bulksmsbd = get_option('digit_bulksmsbd');
+            $senderid = $bulksmsbd['senderid'];
+            $apikey = $bulksmsbd['api_key'];
+
+            $data = array(
+                'message' => $dig_messagetemplate,
+                'number' => $countrycode . $mobile,
+                'api_key' => $apikey,
+                'senderid' => $senderid
+            );
+
+
+            $ch = curl_init();
+
+
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+            curl_setopt($ch, CURLOPT_URL, 'http://bulksmsbd.net/api/smsapi');
+            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+            $result = curl_exec($ch);
+
+
+            if (curl_errno($ch)) {
+                if ($testCall) {
+                    return "curl error:" . curl_errno($ch);
+                }
+
+                return false;
+            }
+            curl_close($ch);
+
+            if ($testCall) {
+                return $result;
+            }
+
+            if ($result === false) {
+                return false;
+            }
+
+            return true;
         case 2:
 
 
