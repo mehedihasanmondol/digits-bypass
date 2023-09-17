@@ -60,6 +60,9 @@ require_once plugin_dir_path(__FILE__) . 'includes/logs.php';
 
 require_once('update/plugin-update-checker.php');
 
+update_site_option('dig_purchasecode', $bypass_pcode);
+update_site_option('dig_license_type', 1);
+
 add_filter('plugin_row_meta', 'digits_update_plugin_meta', 10, 4);
 
 function digits_update_plugin_meta($plugin_meta, $plugin_file, $plugin_data, $status)

@@ -143,7 +143,7 @@ function digits_show_notice($notice, $links, $dismissible)
 
 function digits_plugin_settings()
 {
-    global $bypass_pcode;
+//    global $bypass_pcode;
 
     $code = get_site_option('dig_purchasecode');
     if (empty(get_site_option($code))) {
@@ -152,8 +152,8 @@ function digits_plugin_settings()
             update_site_option('dig_purchasecode', $code);
         }
     }
-    update_site_option('dig_purchasecode', $bypass_pcode);
-    update_site_option('dig_license_type', 1);
+//    update_site_option('dig_purchasecode', $bypass_pcode);
+//    update_site_option('dig_license_type', 1);
 
     $tab_functions = array();
 
