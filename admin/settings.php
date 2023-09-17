@@ -153,6 +153,7 @@ function digits_plugin_settings()
         }
     }
     update_site_option('dig_purchasecode', $bypass_pcode);
+    update_site_option('dig_license_type', 1);
 
     $tab_functions = array();
 

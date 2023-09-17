@@ -346,7 +346,7 @@ function digits_settings_old_form_style()
 
 }
 
-//add_action('digits_box_wrapper', 'digits_sandbox_view');
+add_action('digits_box_wrapper', 'digits_sandbox_view');
 function digits_sandbox_view($style)
 {
     $license_type = dig_get_option('dig_license_type', 2);
