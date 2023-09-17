@@ -188,19 +188,19 @@ function digits_plugin_settings()
     $request_link = esc_attr(admin_url('admin.php?page=digits_settings&tab=dashboard'));
 
 
-    if (isset($_POST['dig_hid_addon_domain_notice'])) {
-        update_site_option('dig_hid_addon_domain_notice', 1);
-    }
-    $dig_hid_addon_domain_notice = get_site_option('dig_hid_addon_domain_notice', -1);
-
-    if ($dig_hid_addon_domain_notice == -1) {
-
-        $notice_links = [
-            ['label' => __('Request', 'digits'), 'url' => $request_link, 'class' => 'digits_show_purchasecode'],
-        ];
-        $notice_text = __('In case you are using same purchase code on your testing/production server, then make sure to request addon domain.', 'digits');
-        digits_show_notice($notice_text, $notice_links, 'dig_hid_addon_domain_notice');
-    }
+//    if (isset($_POST['dig_hid_addon_domain_notice'])) {
+//        update_site_option('dig_hid_addon_domain_notice', 1);
+//    }
+//    $dig_hid_addon_domain_notice = get_site_option('dig_hid_addon_domain_notice', -1);
+//
+//    if ($dig_hid_addon_domain_notice == -1) {
+//
+//        $notice_links = [
+//            ['label' => __('Request', 'digits'), 'url' => $request_link, 'class' => 'digits_show_purchasecode'],
+//        ];
+//        $notice_text = __('In case you are using same purchase code on your testing/production server, then make sure to request addon domain.', 'digits');
+//        digits_show_notice($notice_text, $notice_links, 'dig_hid_addon_domain_notice');
+//    }
 
 //    Wizard::instance()->init_ui();
 
