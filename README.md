@@ -1,17 +1,17 @@
 ## A WordPress plugin to edit.
 
  
-**Plugin type**: WordPress otp login 
-**Edit type**: Need customize otp provider to be added. 
-**Plugin name**: Digits 
+**Plugin type**: WordPress otp login \
+**Edit type**: Need customize otp provider to be added. \
+**Plugin name**: Digits \
 **Plugin link**: https://digits.unitedover.com/
 
 Digits plugin to login by phone OTP. Currently. Need to use ADN message and/or bulkSMSbd. 
 
-But the existing system doesn't have the gateway. 
+But the existing system doesn't have the gateway. \
 So edit the plugin and add the gateways.
 
-As with the existing system, 
+As with the existing system, \
 We want to choose the gateway name and want to put in the gateway details and expect it to work.
 
 **Update Preview:**
